@@ -14,8 +14,7 @@
 
 <style>
     body {
-        background-color: #222;
-
+        background-color: #111;
     }
 
     #app {
@@ -29,8 +28,22 @@
         margin-top: 60px;
     }
     
+    #app img {
+        width: 200px;
+    }
+    
     a {
         color: #41B883;
+    }
+    
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    li {
+        display: inline-block;
+        margin: 0 10px;
     }
 
 </style>
