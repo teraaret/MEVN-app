@@ -1,12 +1,20 @@
 <template>
     <div class="container">
-        <h1>Edit post `{{post.title}}`</h1>
-        <router-link :to="{name: 'Index'}">Index page</router-link>
-        <form @submit.prevent="editPost()">
+        <h1>Редактирование `{{post.title}}`</h1>
+        
+        <ul>
+            <router-link :to="{name: 'Index'}">Главная</router-link>
+            <router-link :to="{name: 'Posts'}">Все посты</router-link>
+        </ul>
+        
+<!--        <form @submit.prevent="editPost()">-->
+        <div class="form">
             <input type="text" placeholder="Title" v-model.trim="post.title">
             <textarea cols="30" rows="10" placeholder="Description" v-model.trim="post.description"></textarea>
-            <button type="submit">edit post</button>
-        </form>
+            <button type="button" @click="editPost()" v-if="fields_ready">Редактировать</button>
+            <p v-if="!fields_ready">Заполнены не все поля</p>
+        </div>
+<!--        </form>-->
     </div>
 </template>
 
@@ -23,6 +31,11 @@
                 }
             }
         },
+        computed: {
+            fields_ready() {
+                return (this.post.title !== '' && this.post.description !== '') ? true : false;
+            }
+        },
         methods: {
             async getPost() {
                 const response = await PostsService.getPost({
@@ -32,15 +45,16 @@
                 this.post.description = response.data.description
             },
             async editPost() {
-                if (this.post.title !== '' && this.post.description !== '') {
-                    await PostsService.updatePost({
+                if (this.fields_ready) {
+                    const response = await PostsService.updatePost({
                         id: this.$route.params.id,
                         title: this.post.title,
                         description: this.post.description
-                    })
+                    });
+                    console.log(response);
                     this.$router.push({
                         name: 'Posts'
-                    })
+                    });
                 }
             }
         },
@@ -54,27 +68,7 @@
 
 <style scoped lang="less">
     .container {
-        form {
-            margin-top: 20px;
-            text-align: center;
-            input, textarea, button {
-                background-color: #555;
-                opacity: 0.8;
-                margin: 0 auto;
-                display: block;
-                width: 400px;
-                border: none;
-                padding: 5px;
-                color: white;
-                border-top: 2px solid #111;
-                &:hover {
-                    opacity: 1;
-                }
-            }
-            button {
-                width: 410px;
-            }
-        }
+        
     }
 
 </style>

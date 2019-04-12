@@ -1,12 +1,15 @@
 <template>
     <div class="container">
-        <h1>New post</h1>
-        <router-link :to="{name: 'Index'}">Index page</router-link>
-        <form>
+        <h1>Новый пост</h1>
+        <ul>
+            <router-link :to="{name: 'Index'}">Главная</router-link>
+            <router-link :to="{ name: 'Posts' }">Все посты</router-link>
+        </ul>
+        <div class="form">
             <input type="text" placeholder="Title" v-model.trim="post.title" autocomplete="off">
             <textarea cols="30" rows="5" placeholder="Description" v-model.trim="post.description"></textarea>
-            <button type="button" @click="addPost()">Add post</button>
-        </form>
+            <button type="button" @click="addPost()" v-if="fields_ready">Добавить</button>
+        </div>
     </div>
 </template>
 
@@ -24,9 +27,14 @@
                 }
             }
         },
+        computed: {
+            fields_ready() {
+                return (this.post.title !== '' && this.post.description !== '') ? true : false;
+            }
+        },
         methods: {
             async addPost() {
-                if (this.post.title !== '' && this.post.description !== '') {
+                if (this.fields_ready) {
                     await PostsService.addNewPost({
                         title: this.post.title,
                         description: this.post.description
@@ -36,7 +44,7 @@
                     });
                 } 
                 else {
-                    alert('Empty fields!')
+                    alert('Заполнены не все поля')
                 }
             },
             goBack() {

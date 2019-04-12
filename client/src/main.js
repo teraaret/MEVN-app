@@ -4,6 +4,9 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
+require('@/assets/less/style.less')
+require('@/assets/less/transitions.less')
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

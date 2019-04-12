@@ -1,7 +1,9 @@
-import Index from '@/components/IndexPage'
-import Posts from '@/components/PostsPage'
-import NewPost from '@/components/NewPostPage'
-import EditPost from '@/components/EditPostPage'
+import Index from '@/components/Index'
+import Posts from '@/components/Posts'
+import NewPost from '@/components/NewPost'
+import Post from '@/components/Post'
+import EditPost from '@/components/EditPost'
+import Settings from '@/components/Settings'
 
 const routes = [
     {
@@ -21,9 +23,19 @@ const routes = [
     },
     {
         path: '/posts/:id',
+        name: 'Post',
+        component: Post
+    },
+    {
+        path: '/posts/edit/:id',
         name: 'EditPost',
         component: EditPost
-    }
+    },
+    {
+        path: '/settings',
+        name: 'Settings',
+        component: Settings
+    },
 ]
 
 export default routes
