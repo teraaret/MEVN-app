@@ -1,10 +1,10 @@
-@accent: #41B883;
-@decent: #FFC20F;
-
-@font_color: #eee;
-@font_size: 16px;
-@bg: #111;
-@bg_tr: rgba(255,255,255,0.05);
+//@accent: #41B883;
+//@decent: #FFC20F;
+//
+//@font_color: #eee;
+//@font_size: 16px;
+//@bg: #111;
+//@bg_tr: rgba(255,255,255,0.05);
 
 @path-fonts: '../fonts';
 
@@ -20,8 +20,8 @@
 }
 
 body {
-    background-color: @bg;
-    color: @font_color;
+//    background-color: @bg;
+//    color: @font_color;
     font-size: @font_size;
 }
 
@@ -32,11 +32,11 @@ body {
     margin-top: 25px;
 
     sup {
-        color: @accent;
+//        color: @accent;
     }
 
     sub {
-        color: @decent;
+//        color: @decent;
     }
 
     img {
@@ -44,19 +44,19 @@ body {
         transition: 0.5s ease;
         &:hover {
             transform: rotate(107deg);
-            filter: hue-rotate(100deg) brightness(80%);
+//            filter: hue-rotate(100deg) brightness(80%);
         }
     }
 
     a,
     .button-link {
-        color: @accent;
+//        color: @accent;
         font-weight: 700;
         text-decoration: none;
         padding: 0 10px;
 
         &:hover {
-            color: @decent;
+//            color: @decent;
         }
 
         font-style: normal;
@@ -85,14 +85,16 @@ body {
         input,
         textarea,
         button {
-            background-color: #222;
+            background-color: transparent;
             margin: 0 auto;
             display: block;
             width: 400px;
-            border: none;
             padding: 5px;
-            color: white;
-            border-top: 2px solid #111;
+            border: none;
+            margin-top: 5px;
+            &:focus {
+                outline: none;
+            }
         }
 
         button {
@@ -102,13 +104,13 @@ body {
             font-size: @font_size;
 
             &:hover {
-                background-color: @accent;
+//                background-color: @accent;
             }
         }
     }
 
     .post {
-        background-color: @bg_tr;
+//        background-color: @bg_tr;
         margin-top: 20px;
         text-align: left;
         padding-top: 10px;
@@ -132,14 +134,16 @@ body {
     
     .settings {
         select {
-            background-color: #222;
+            background-color: transparent;
             margin: 0 auto;
             display: block;
             width: 400px;
             border: none;
             padding: 5px;
-            color: white;
-            border-top: 2px solid #111;
+//            border: 1px solid @font_color;
+            option {
+                color: black;
+            }
         }
     }
 }

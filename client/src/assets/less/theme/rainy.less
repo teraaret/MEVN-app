@@ -1,0 +1,63 @@
+@accent: #2f4170;
+@decent: #ffd19e;
+
+@font_color: #121;
+@font_size: 16px;
+@bg: #a1abb5;
+@bg_tr: #848d9688;
+
+@path-fonts: '../fonts';
+
+@import "../style.less";
+
+// ============================================== //
+
+body {
+    background-color: @bg !important;
+    color: @font_color !important;
+    font-size: @font_size !important;
+}
+
+#app {
+    sup {
+        color: @accent !important;
+    }
+
+    sub {
+        color: @decent !important;
+    }
+    a,
+    .button-link {
+        color: @accent !important;
+        &:hover {
+            color: @decent !important;
+        }
+    }
+
+    .form {
+        input,
+        textarea,
+        button {
+            background-color: @bg_tr !important;
+            color: @font_color !important;
+        }
+
+        button {
+            &:hover {
+                background-color: @accent !important;
+                color: @bg !important;
+            }
+        }
+    }
+
+    .post {
+        background-color: @bg_tr !important;
+    }
+    
+    .settings {
+        select {
+            color: @font_color !important;
+            background-color: @bg_tr !important;
+        }
+    }
+}

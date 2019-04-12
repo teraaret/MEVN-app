@@ -1,5 +1,6 @@
 <template>
     <div id="app">
+<!--        <p>theme cookie: {{ $cookie.get('theme') }}</p>-->
         <img src="./assets/img/sun.png">
         <transition name="fade" mode="out-in">
             <router-view />

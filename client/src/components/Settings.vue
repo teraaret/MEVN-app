@@ -7,9 +7,9 @@
         </ul>
         <div class="settings">
             <label for="theme">Цветовая схема:
-                <select id="theme" @change="setTheme()">
+                <select id="theme" @change="setTheme()" v-model="theme">
                     <option value="dark">Dark night</option>
-                    <option value="light">Milk islands</option>
+                    <option value="milky">Milky islands</option>
                     <option value="rainy">Rainy morning</option>
                 </select>
             </label>
@@ -20,17 +20,22 @@
 
 <script>
 
-export default {
-    data () {
-        return {
-            theme: null
-        }
-    },
-    methods: {
-        setTheme() {
-            alert('y');
+//    import PostsService from '@/services/PostsService'
+    export default {
+        data () {
+            return {
+                theme: this.$cookie.get('theme')
+            }
+        },
+        methods: {
+            setTheme() {
+                this.$cookie.set('theme', this.theme, 1);
+                this.$router.go();
+//                this.$router.push({
+//                    name: 'Settings'
+//                })
+            }
         }
     }
-}
 
 </script>
