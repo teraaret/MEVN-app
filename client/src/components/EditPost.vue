@@ -3,23 +3,21 @@
         <h1>Редактирование `{{post.title}}`</h1>
         
         <ul>
-            <router-link :to="{name: 'Index'}">Главная</router-link>
-            <router-link :to="{name: 'Posts'}">Все посты</router-link>
+            <router-link :to="{ name: 'Posts' }">Назад к постам</router-link>
         </ul>
         
-<!--        <form @submit.prevent="editPost()">-->
         <div class="form">
             <input type="text" placeholder="Title" v-model.trim="post.title">
             <textarea cols="30" rows="10" placeholder="Description" v-model.trim="post.description"></textarea>
             <button type="button" @click="editPost()" v-if="fields_ready">Редактировать</button>
             <p v-if="!fields_ready">Заполнены не все поля</p>
         </div>
-<!--        </form>-->
     </div>
 </template>
 
 
 <script>
+    
     import PostsService from '@/services/PostsService'
     export default {
         name: 'EditPostPage',
@@ -64,11 +62,3 @@
     }
 
 </script>
-
-
-<style scoped lang="less">
-    .container {
-        
-    }
-
-</style>

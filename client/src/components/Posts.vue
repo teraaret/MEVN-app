@@ -2,9 +2,7 @@
     <div class="container">
         <h1>Все посты ({{posts.length}})</h1>
         <ul>
-            <router-link :to="{name: 'Index'}">Главная</router-link>
-            <router-link :to="{name: 'Newpost'}">Новый пост</router-link>
-            <router-link :to="{name: 'Settings'}">Настройки</router-link>
+            <router-link :to="{name: 'NewPost'}">Новый пост</router-link>
         </ul>
         <div class="post" v-for="post in posts">
             <h3>

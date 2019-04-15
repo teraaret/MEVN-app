@@ -13,6 +13,7 @@ app.use(morgan('combined'));
 app.use(bodyParser.json());
 app.use(cors());
 app.use(require('./routes/posts')); // маршруты сервера
+app.use(require('./routes/tags')); // маршруты сервера
 
 //app.get('/posts', (req, res) => {
 //  res.send(

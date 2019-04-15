@@ -1,10 +1,6 @@
 <template>
     <div class="container">
         <h1>Настройки</h1>
-        <ul>
-            <router-link :to="{name: 'Index'}">Главная</router-link>
-            <router-link :to="{name: 'Posts'}">Все посты</router-link>
-        </ul>
         <div class="settings">
             <label for="theme">Цветовая схема:
                 <select id="theme" @change="setTheme()" v-model="theme">

@@ -1,6 +1,11 @@
 <template>
     <div id="app">
-<!--        <p>theme cookie: {{ $cookie.get('theme') }}</p>-->
+        <ul>
+            <router-link :to="{name: 'Index'}">Главная</router-link>
+            <router-link :to="{name: 'Posts'}">Посты</router-link>
+            <router-link :to="{name: 'Tags'}">Категории</router-link>
+            <router-link :to="{name: 'Settings'}">Настройки</router-link>
+        </ul>
         <img src="./assets/img/sun.png">
         <transition name="fade" mode="out-in">
             <router-view />

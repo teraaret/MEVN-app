@@ -1,8 +1,15 @@
 import Index from '@/components/Index'
+
 import Posts from '@/components/Posts'
 import NewPost from '@/components/NewPost'
 import Post from '@/components/Post'
 import EditPost from '@/components/EditPost'
+
+import Tags from '@/components/Tags'
+import NewTag from '@/components/NewTag'
+import Tag from '@/components/Tag'
+import EditTag from '@/components/EditTag'
+
 import Settings from '@/components/Settings'
 
 const routes = [
@@ -11,6 +18,7 @@ const routes = [
         name: 'Index',
         component: Index
     },
+    
     {
         path: '/posts',
         name: 'Posts',
@@ -18,7 +26,7 @@ const routes = [
     },
     {
         path: '/posts/new',
-        name: 'Newpost',
+        name: 'NewPost',
         component: NewPost
     },
     {
@@ -31,6 +39,28 @@ const routes = [
         name: 'EditPost',
         component: EditPost
     },
+    
+    {
+        path: '/tags',
+        name: 'Tags',
+        component: Tags
+    },
+    {
+        path: '/tags/new',
+        name: 'NewTag',
+        component: NewTag
+    },
+    {
+        path: '/tags/:id',
+        name: 'Tag',
+        component: Tag
+    },
+    {
+        path: '/tags/edit/:id',
+        name: 'EditTag',
+        component: EditTag
+    },
+    
     {
         path: '/settings',
         name: 'Settings',
