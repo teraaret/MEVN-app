@@ -1,9 +1,16 @@
 <template>
     <div class="container">
         <h1>{{ post.title }}</h1>
+<!--        {{ post }}-->
         <p v-for="par in post.description">
             {{par}}
         </p>
+        <hr>
+        <p v-if="post.tag">
+            Тег: 
+            <router-link :to="{ name: 'Tag', params: { id: post.tag._id }}">{{ post.tag.title }}</router-link>
+        </p>
+        <p v-else>Тег: не указан</p>
         
         <ul>
             <router-link :to="{name: 'Index'}">Главная</router-link>
@@ -23,7 +30,9 @@
                 post: {
                     id: '',
                     title: '',
-                    description: []
+                    description: [],
+                    tag_id: '',
+                    tag: {}
                 }
             }
         },
@@ -34,6 +43,8 @@
                 });
                 this.post.id = response.data._id;
                 this.post.title = response.data.title;
+                this.post.tag_id = response.data.tag_id;
+                this.post.tag = response.data.tag;
                 let breaks = /\n/gi;
                 this.post.description = response.data.description.split("\n");
             },

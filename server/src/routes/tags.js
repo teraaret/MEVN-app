@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Tag = require('../models/tag-model')
+const Post = require('../models/post-model')
 
 router.get('/tags', (req, res) => {
     Tag.find({}, 'title', (err, tags) => {
@@ -32,16 +33,48 @@ router.post('/tags', (req, res) => {
     })
 })
 
-router.get('/tags/:id', (req, res) => {
-    Tag.findById(req.params.id, 'title', (err, tag) => {
-        if (err) {
+
+// Get tag and posts with this tag
+//
+router.get('/tags/:id', (req, res) => 
+{
+    Tag.findOne( { _id: req.params.id }, (err, tag) => 
+    {
+        if (err) 
+        {
             res.sendStatus(500)
-        } else {
-            res.send(tag)
+        } 
+        else 
+        {
+            Post.find( { tag_id: tag._id }, (err, posts) => 
+            {
+                if (err || !posts.length) 
+                {
+                    res.send( { tag: tag, posts: [] } );
+                } 
+                else 
+                {
+                    var step = 0;
+                    posts.forEach( async function(post, index, array) 
+                    {
+                        // Ожидаем эту срань при помощи await
+                        await post.findTag(post.tag_id, (err, tag) => 
+                        {
+                            post.tag = tag;
+                        });
+                        step++;
+                        if (step === array.length) 
+                        {
+                            res.send( { tag: tag, posts: posts } );
+                        }
+                    })
+                }
+            })
         }
     })
 })
-
+                
+                
 router.put('/tags/:id', (req, res) => {
     Tag.findById(req.params.id, 'title', (err, tag) => {
         if (err) {

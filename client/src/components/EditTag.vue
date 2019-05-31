@@ -37,7 +37,7 @@
                 const response = await TagsService.getTag({
                     id: this.$route.params.id
                 })
-                this.tag.title = response.data.title
+                this.tag.title = response.data.tag.title
             },
             async editTag() {
                 if (this.fields_ready) {
